@@ -29,15 +29,24 @@ export const Post = defineDocumentType(() => ({
     headings: {
       type: "json",
       resolve: async (doc) => {
+        // use same package as rehypeSlug so table of contents and sluggified
+        // headings match
+        // https://github.com/rehypejs/rehype-slug/blob/main/package.json#L36
         const slugger = new GithubSlugger()
+
+        // https://stackoverflow.com/a/70802303
         const regXHeader = /\n\n(?<flag>#{1,6})\s+(?<content>.+)/g
 
         const headings = Array.from(doc.body.raw.matchAll(regXHeader)).map(
-          ({ groups }) => ({
-            heading: groups?.flag?.length,
-            text: groups?.content,
-            slug: groups?.content ? slugger.slug(groups?.content) : undefined
-          })
+          ({ groups }) => {
+            const flag = groups?.flag
+            const content = groups?.content
+            return {
+              heading: flag?.length,
+              text: content,
+              slug: content ? slugger.slug(content) : undefined,
+            }
+          },
         )
 
         return headings

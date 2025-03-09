@@ -12,10 +12,9 @@ export const HEADING_LINK_ANCHOR = `before:content-['#'] before:absolute before:
 export const OOF_GRAD = `bg-gradient-to-br from-rose-200 to-rose-200/30 bg-clip-text text-transparent`
 
 export const meta = {
-  name: "Ayo",
+  name: "Shodipo Ayomide",
   twitterHandle: "@developerayo",
   domain: "shodipoayomdie.com",
   tagline: "Head of Developer Relations at Nuklai Protocol",
-  description:
-    "Software Architect, Full-Stack Engineer, Smart Contracts, LLMs",
+  description: "Software Architect, Full-Stack Engineer, Smart Contracts, LLMs",
 }

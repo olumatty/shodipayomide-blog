@@ -8,7 +8,7 @@ const Delba = () => (
     height={64}
     priority={true}
     className="rounded-full"
-    alt="A photo of Ayo"
+    alt="A photo of Delba"
   />
 )
 

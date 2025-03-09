@@ -23,7 +23,7 @@ export const BlurImage = (props: ImageProps) => {
             ? "scale-[1.02] blur-xl grayscale"
             : "scale-100 blur-0 grayscale-0",
         )}
-        onLoadingComplete={() => setLoading(false)}
+        onLoad={() => setLoading(false)}
       />
     </div>
   )

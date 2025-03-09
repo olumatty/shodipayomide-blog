@@ -17,7 +17,7 @@ export default function Post({ post }: { post: FormattedPost }) {
 
   return (
     <>
-      <div className="mt-24 mb-4 xl:!col-end-5">
+      <div className="lg:mt-12 mt-6 mb-4 xl:!col-end-5">
         <Link href="/" className="group inline-flex items-center space-x-2">
           <div className="transition rounded-full bg-rose-200/10 p-1 text-rose-200/80 group-hover:bg-rose-200/25 group-hover:text-rose-200">
             <Left className="w-4 group-hover:scale-125 transition-transform group-active:scale-110" />

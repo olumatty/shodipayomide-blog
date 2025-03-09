@@ -3,7 +3,6 @@
 import { FOCUS_VISIBLE_OUTLINE, LINK_SUBTLE_STYLES } from "@/lib/constants"
 import clsx from "clsx"
 import Link from "next/link"
-// import { useState } from "react"
 import confetti from "canvas-confetti"
 
 const WEEKDAYS_INNIT = {
@@ -138,9 +137,9 @@ export const SiteFooter = () => {
   }
 
   return (
-    <footer className="mt-36 pb-36 text-base relative">
-      <div className="max-w-7xl mx-auto px-4">
-        <div className="flex flex-col justify-between items-center lg:flex-row">
+    <div className="mt-36 pb-12 text-base">
+      <div className="text-rose-100/50">
+        <div className="flex flex-col justify-between items-center gap-6 font-medium lg:flex-row lg:gap-0">
           <div className="mb-4 lg:mb-0">
             <button
               className="text-rose-100 cursor-pointer transition-all duration-300 transform 
@@ -153,62 +152,51 @@ export const SiteFooter = () => {
               {getDayAndMessage()}
             </button>
           </div>
+          <div className="flex space-x-5">
+            <div>
+              <Link
+                href="/blog"
+                className={clsx(LINK_SUBTLE_STYLES, FOCUS_VISIBLE_OUTLINE)}
+              >
+                Posts
+              </Link>
+            </div>
 
-          <nav className="flex justify-center space-x-5">
-            <Link
-              href="/blog"
-              className={clsx(
-                LINK_SUBTLE_STYLES,
-                FOCUS_VISIBLE_OUTLINE,
-                "transition-all hover:text-rose-100",
-              )}
-            >
-              Blog
-            </Link>
-
-            <Link
+            <a
               href="https://twitter.com/developerayo"
-              className={clsx(
-                LINK_SUBTLE_STYLES,
-                FOCUS_VISIBLE_OUTLINE,
-                "transition-all hover:text-rose-100",
-              )}
+              className={clsx(LINK_SUBTLE_STYLES, FOCUS_VISIBLE_OUTLINE)}
+              target="_blank"
+              rel="noopener noreferrer"
             >
               X
-            </Link>
-            <Link
+            </a>
+            <a
               href="https://shodipoayomide.com"
-              className={clsx(
-                LINK_SUBTLE_STYLES,
-                FOCUS_VISIBLE_OUTLINE,
-                "transition-all hover:text-rose-100",
-              )}
+              className={clsx(LINK_SUBTLE_STYLES, FOCUS_VISIBLE_OUTLINE)}
+              target="_blank"
+              rel="noopener noreferrer"
             >
               Website
-            </Link>
-            <Link
+            </a>
+            <a
               href="https://github.com/developerayo"
-              className={clsx(
-                LINK_SUBTLE_STYLES,
-                FOCUS_VISIBLE_OUTLINE,
-                "transition-all hover:text-rose-100",
-              )}
+              className={clsx(LINK_SUBTLE_STYLES, FOCUS_VISIBLE_OUTLINE)}
+              target="_blank"
+              rel="noopener noreferrer"
             >
               GitHub
-            </Link>
-          </nav>
-
-           <div className="text-center">
-            <p className="text-rose-200/30">
-              Built with{" "}
-              <span role="img" aria-label="love">
-                ❤️
-              </span>{" "}
-              © {new Date().getFullYear()}
-            </p>
+            </a>
           </div>
         </div>
       </div>
-    </footer>
+
+      <p className="mt-20 text-center text-rose-200/30">
+        Built with{" "}
+        <span role="img" aria-label="love">
+          ❤️
+        </span>{" "}
+        © {new Date().getFullYear()}
+      </p>
+    </div>
   )
 }

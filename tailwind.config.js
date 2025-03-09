@@ -21,11 +21,11 @@ module.exports = {
       colors: {
         custom: {
           bg: {
-            from: '#1a1a1a',
-            via: '#141414',
-            to: '#0a0a0a'
-          }
-        }
+            from: "#1a1a1a",
+            via: "#141414",
+            to: "#0a0a0a",
+          },
+        },
       },
       keyframes: ({ theme }) => ({
         mutation: {

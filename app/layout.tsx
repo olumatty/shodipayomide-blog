@@ -6,15 +6,14 @@ import localFont from "next/font/local"
 import clsx from "clsx"
 import { Metadata, Viewport } from "next"
 import { PreloadResources } from "@/lib/preload-resources"
-import { Analytics } from '@vercel/analytics/react';
-
+import { Analytics } from "@vercel/analytics/react"
 
 export const viewport: Viewport = {
   themeColor: "#1c1917",
 }
 export async function generateMetadata(): Promise<Metadata> {
   return {
-    title: { template: "Delba | %s", default: "Delba" },
+    title: { template: "Shodipo Ayomide | %s", default: "Shodipo Ayomide" },
     metadataBase: new URL(`https://${meta.domain}`),
     openGraph: {
       title: meta.name,
@@ -73,7 +72,7 @@ export default function RootLayout({
           <rect width="100%" height="100%" filter="url(#noise)" />
         </svg>
 
-        <div className="layout-sm relative z-10 grid gap-y-8 px-4 pt-12 text-rose-200/90 xl:layout-xl xl:gap-x-9 xl:px-0 [&>*]:col-start-2 xl:[&>*]:col-start-3">
+        <div className="layout-sm relative z-10 grid gap-y-8 px-4 lg:pt-12 text-rose-200/90 xl:layout-xl xl:gap-x-9 xl:px-0 [&>*]:col-start-2 xl:[&>*]:col-start-3">
           {children}
 
           <SiteFooter />

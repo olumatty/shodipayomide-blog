@@ -25,6 +25,7 @@ const nextConfig = {
       },
       { hostname: "api.microlink.io" },
       { hostname: "pbs.twimg.com" },
+      { hostname: "blog.shodipoayomide.com" },
     ],
   },
 
