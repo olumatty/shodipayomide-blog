@@ -17,6 +17,7 @@ const nextConfig = {
   },
   images: {
     // allow next/image to serve remote images from safelisted domains
+    domains: ['res.cloudinary.com', 'i.ibb.co'],
     remotePatterns: [
       {
         protocol: "https",

@@ -1,0 +1,161 @@
+---
+title: "An Exploration of the zkEVM & The Polygon zkEVM"
+description: "By design, the Polygon zkEVM is an EVM-compatible zk-rollup. It aims to improve throughput, performance, and efficiency."
+publishedAt: "2022-10-04"
+status: "published"
+---
+
+<div className="flex justify-center">
+  <Img
+    src="https://i.ibb.co/Y0v7nwT/poly2.png"
+    alt="An Exploration of the zkEVM & The Polygon zkEVM"
+    width={300}
+    height={200}
+  />
+</div>
+
+## Introduction
+
+By design, the Polygon zkEVM is an EVM-compatible zk-rollup. It aims to improve throughput, performance, and efficiency. By leveraging Plonky2 (a cutting-edge zk-scaling technology), it is able to generate light proofs and also facilitate recursive verification of SNARKs thereby allowing users verify proofs quickly.
+
+Apart from reduced proof-generation time, the zkEVM now facilitates very cheaper transactions making every decentralized application on the zkEVM more cost-efficient.
+
+## Ethereum’s Scalability Problem
+
+At the moment, trying to build decentralized applications used by the masses on Ethereum is not feasible because transactions take a long time to be processed and are quite expensive and this creates a poor user experience and this hinders meaningful adoption.
+
+The reason behind this problem is that each node participating in the network needs to process each and every transaction which leads to only 13 transactions being processed per second.
+
+## The Role of ZK-rollups
+
+Zk-Rollups are the second type of rollups after optimistic rollups. They differ from their optimistic counterparts because they employ the generation of cryptographic proofs known as zk-proofs to verify transactions that have been batched up instead of using the delay period mechanism that optimistic rollups use, this makes zk-rollups faster.
+
+Zk-rollups cost far less because they bundle up transactions into a single batch and post only the proofs of the transactions. Up until now, ZK-rollups that supported smart contracts required that developers leave the Ethereum ecosystem because they were not compatible with the EVM.
+
+Polygon has gone ahead to build a ZK-rollup with a code runtime environment that supports Ethereum bytecode called the Polygon zkEVM. This saves developers the hassle of having to write code from scratch, instead they can easily migrate their smart contracts to the zkEVM.
+
+<div className="flex justify-center">
+  <Img
+    src="https://i.ibb.co/hyjX19m/images-40.jpg"
+    alt="An Exploration of the zkEVM & The Polygon zkEVM"
+    width={300}
+    height={200}
+  />
+</div>
+<small>
+  <a href="https://blog.pantherprotocol.io/zk-rollup-projects-inner-workings-importance-analysis/amp/">
+    Hermez zk-rollup Architecture
+  </a>
+</small>
+
+## Why the zkEVM is the future
+
+Before we talk about how the zkEVM is better than the traditional EVM, we need to understand how the traditional EVM works.
+
+The Ethereum virtual machine(EVM) is a turing-complete virtual machine that acts as the runtime environment for smart contracts. When a transaction happens, all the contract bytecode will be compiled from source and uploaded to the EVM storage, here peer-to-peer nodes will be executed. The nodes make sure that they reach the correct destination using the same transaction inputs.
+
+Next, the EVM operation codes (opcodes) interact with the different states of the EVM, then read the values from state storage and send the new values to the EVM’s storage.
+
+In the end, the new values are replicated by the new nodes and the state is sustained until another transaction is processed.
+
+<div className="flex justify-center">
+  <Img
+    src="https://i.ibb.co/WW0HD8M/images-1.png"
+    alt="An Exploration of the zkEVM & The Polygon zkEVM"
+    width={300}
+    height={200}
+  />
+</div>
+<small>
+  <a href="https://hackernoon.com/getting-deep-into-evm-how-ethereum-works-backstage-ac7efa1f0015">
+    Ethereum Virtual MachineIllustration Of The EVM Execution Model
+  </a>
+</small>
+
+The zkEVM operates using this same principle but goes further to make sure that the data is better checked. In addition to the steps talked about in the EVM, the zkEVM also checks if the bytecode being loaded is correct and is from the correct address. It also ensures that data from the blockchain matches the data in the EVM.
+
+## Polygon zkEVM Architecture
+
+Just like the EVM, the zkEVM’s main functionality is to support smart contracts. It will compile L2 transactions, carry out state transitions and testify to the validity of these state changes by generating validity proofs.
+
+**The zkEVM has 5 major components:**
+
+1. Users who send in transactions
+2. A consensus mechanism known as Proof-of-Efficiency
+3. An LX-to-LY bridge which is a smart contracts that users can use to transfer assets across different layers
+4. A specialized hardware that generates validity proofs known as zkProver
+5. A software known as zkNode used by participants of the network to govern the network and for synchronization.
+
+<div className="flex justify-center">
+  <Img
+    src="https://i.ibb.co/80ZNzyG/fig-simple-poe.png"
+    alt="Flattening the contract"
+    width={300}
+    height={200}
+  />
+</div>
+<small>
+  <a href="https://wiki.polygon.technology/docs/hermez/zkEVM-Architectural-Overview/">
+    Illustration of The PoE Smart Contract
+  </a>
+</small>
+
+### Sequencers
+
+Sequencers collect L2 transactions from users of the network, then package these transactions into a batch and propose this batch to the PoE smart contract. The role of a sequencer is permissionless, anyone can be a sequencer as long as they have the zkNode software running on their machine. This improves decentralization of the network.
+
+A sequencer who wants to propose a batch on L1, has to pay the L1 gas fees and deposit an additional token fee. This helps guard against spamming and also motivates sequencers to propose only valid transactions. The batch fees paid by users is how sequencers get incentivized.
+
+The proposed batches will be posted to the L1 as calldata. Any new permissionless node will reconstruct the data and now synchronize its state. Once it is mined, the L1 transactions determine the order in which the L2 transactions get executed. A deterministic new state is now created, the new state is only established when the validity proof is sent to the L1. This is where the role of aggregators comes into play.
+
+<div className="flex justify-center">
+  <Img
+    src="https://i.ibb.co/q5C6WCk/png-20220911-144628-0000.png"
+    alt="Flattening the contract"
+    width={300}
+    height={200}
+  />
+</div>
+<small>
+  <a href="https://ethresear.ch/t/proof-of-efficiency-a-new-consensus-mechanism-for-zk-rollups/11988">
+    How Sequencers Work
+  </a>
+</small>
+
+### Aggregators
+
+The role of an aggregator is to generate validity proofs for the batches of L2 transactions proposed by the sequencers. When batches are proposed they are arranged according to their position and they contain transaction data.
+
+Aggregators now compete to create validity proofs for each batch using a specialized hardware known as the zkProver. The first aggregator to generate this proof is rewarded with the Matic fee deposited by sequencers.
+
+The role of an aggregator is also open to anyone as long as they have the zkNode software installed and they can run the zkProver.
+
+<div className="flex justify-center">
+  <Img
+    src="https://i.ibb.co/syX6vXM/png-20220911-145742-0000.png"
+    alt="Flattening the contract"
+    width={300}
+    height={200}
+  />
+</div>
+<small>
+  <a href="https://ethresear.ch/t/proof-of-efficiency-a-new-consensus-mechanism-for-zk-rollups/11988">
+    How Aggregators Work
+  </a>
+</small>
+
+## Characteristics of the zkEVM Design
+
+**1. EVM-Equivalent**: Polygon’s zkEVM has “bytecode-level” compatibility. This means that it has full compatibility at the EVM opcode level and at the solidity language level. All tools, smart contracts that run on Ethereum don’t need any changes whatsoever in order for them to also run on the zkEVM.
+
+**2. Secure**: Understanding that the zkEVM inherits most of its security from Ethereum, it also employs zero-knowledge proofs like zk-STARKs and zk-SNARKs to ensure that when state changes occur, they are done; correctly, proofs that attest to the state change are generated and that these proofs are made available on-chain for verification.
+
+**3. Decentralized and Permissionless**: Anyone can participate in the network as long as the possess the required tools depending on the roles they want to play.
+
+**4. Efficient**: Since efficiency is key to the network's performance, the most efficient aggregators get to provide validity proofs and get incentivized, also all computations are done off-chain while only the zk-proofs and necessary data are kept on-chain.
+
+## Conclusion
+
+The zkEVM is the improved version of the regular virtual machines, carrying out transactions faster and in a more secure way. The entire project will be made open-source by Polygon and can be used by anyone who is looking for a better, cheaper and faster way to use Ethereum.
+
+It's a very complex technology but we are aggressively building and can't wait to show you what we have been working on.

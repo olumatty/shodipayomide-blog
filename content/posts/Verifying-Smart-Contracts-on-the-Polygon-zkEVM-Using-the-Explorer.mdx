@@ -1,0 +1,195 @@
+---
+title: "Verifying Smart Contracts on the Polygon zkEVM Using the Explorer"
+description: "Source code of smart contracts deployed on the Polygon POS chain can be verified using the explorer, similarly, contracts deployed on the Polygon zkEVM testnet can also be verified using the Polygon zkEVM testnet explorer..."
+publishedAt: "2023-01-19"
+status: "published"
+---
+
+<div className="flex justify-center">
+  <Img
+    src="https://i.ibb.co/tHj0nqV/800-verifyy.png"
+    alt="Verifying Smart Contracts on the Polygon zkEVM Using the Explorer"
+    width={300}
+    height={200}
+  />
+</div>
+
+Source code of smart contracts deployed on the Polygon POS chain can be verified using the explorer, similarly, contracts deployed on the Polygon zkEVM testnet can also be verified using the Polygon zkEVM testnet explorer. We will be going through how to do this in this technical tutorial.
+
+Verified smart contracts offer trustlessness because they are contracts whose published source code matches their bytecode. Verified smart contracts ensure. This allows users to read the contract and understand how it was implemented, and also interact with it directly through the explorer.
+
+Before we start verification, we need to understand that contracts could be single files or multiple files. Single solidity files are solidity contracts that don’t inherit other contracts, libraries or interfaces.
+
+In real life, deployed contracts will rarely be single solidity files so in this tutorial, we will be verifying an ERC20 token that is deployed on the zkEVM testnet. Single solidity files can be verified the exact same way.
+
+Now let’s get into verifying our zkEVM contracts!
+
+## Deploying Our Contract
+
+The first step is to deploy our contract
+
+To be able to deploy to the testnet, you must have imported it into your metamask wallet. If you haven’t, follow the steps discussed in this [blog post](https://polygon.technology/blog/your-three-step-guide-to-using-polygon-zkevm-yes-its-that-easy). The blog post details how to import the testnet and also how to get testnet ETH.
+
+To deploy, head over to [Remix IDE](https://remix.ethereum.org/), create a new file and paste this code.
+
+```rust
+// SPDX-License-Identifier: MIT
+
+pragma solidity ^0.8.9;
+
+import "@openzeppelin/contracts/token/ERC20/ERC20.sol";
+import "@openzeppelin/contracts/access/Ownable.sol";
+
+contract zkToken is ERC20, Ownable {
+    constructor() ERC20("zkToken", "ZKT") {
+        _mint(msg.sender, 10000 * 10 ** decimals());
+
+    }
+
+    function mint(address to, uint256 amount) public onlyOwner {
+            _mint(to, amount);
+    }
+
+}
+```
+
+Head over to the “compile tab” and before you compile, you need to note the compiler version you are using. Here we will be using the 0.8.12 version.
+
+<div className="flex justify-center">
+  <Img
+    src="https://i.ibb.co/x1Bp8Dp/Screenshot-90-LI.jpg"
+    alt="Remix IDE"
+    width={300}
+    height={200}
+  />
+</div>
+
+After hitting “compile” and the contract has successfully compiled, it is time to deploy.
+
+Now head to the “Deploy & Run Transaction” tab. Switch from the default "Remix VM London" to "Injected Web3 Provider" which will cause metamask to pop up. Before doing this, ensure that you have switched over to the polygon zkEVM testnet.
+
+<div className="flex justify-center">
+  <Img
+    src="https://i.ibb.co/5xn2pmS/Screenshot-92.png"
+    alt="Deploying the contract"
+    width={300}
+    height={200}
+  />
+</div>
+
+Connect your wallet, hit the orange "deploy" button and the contract will be deployed immediately!
+
+Because our contract imports other contracts, we can't verify by pasting our source code directly, we will need to flatten our code.
+
+## Flattening Our Contract Using the Flattener Plugin In Remix
+
+When we flatten our smart contracts, we combine all the solidity code into one file instead of having multiple source files. This means instead of having imports, we now have the imported code embedded in the same file.
+
+To flatten our smart contract, we carry out the following steps:
+
+**Step 1**: Navigate to the "plugin manager" in Remix which is just above the settings tab.
+
+<div className="flex justify-center">
+  <Img
+    src="https://i.ibb.co/tpH6QVn/Screenshot-97-LI.jpg"
+    alt="Flattening the contract"
+    width={300}
+    height={200}
+  />
+</div>
+
+**Step 2**: Search for the "Flattener" plugin and activate
+
+<div className="flex justify-center">
+  <Img
+    src="https://i.ibb.co/0JKL8Lx/Screenshot-98-LI.jpg"
+    alt="Flattening the contract"
+    width={300}
+    height={200}
+  />
+</div>
+
+**Step 3**: Now navigate to the flattener tab and click on "Flatten Contracts/zkToken.
+
+<div className="flex justify-center">
+  <Img
+    src="https://i.ibb.co/MZH7FzL/Screenshot-99.png"
+    alt="Flattening the contract"
+    width={300}
+    height={200}
+  />
+</div>
+
+**Step 4**: The flattened contract is then saved by clicking on the save button
+
+## Checking Contract On Explorer
+
+Now that our contract has been deployed, we can check it out on the [explorer](https://explorer.public.zkevm-test.net/).
+
+First things first, we paste the contract address in the search bar and we would be presented with this interface.
+
+<div className="flex justify-center">
+  <Img
+    src="https://i.ibb.co/HNRNbMd/Screenshot-94.png"
+    alt="Flattening the contract"
+    width={300}
+    height={200}
+  />
+</div>
+
+Navigate to the "code" tab and locate the "verify and publish" button.
+
+<div className="flex justify-center">
+  <Img
+    src="https://i.ibb.co/NSJwHXm/Screenshot-95-LI.jpg"
+    alt="Flattening the contract"
+    width={300}
+    height={200}
+  />
+</div>
+
+After clicking the "verify and publish" button, we are presented with three options, we will go ahead with the first option, "verify via flattened source code", then hit "Next"
+
+<div className="flex justify-center">
+  <Img
+    src="https://i.ibb.co/gSfzjGN/Screenshot-96-LI.jpg"
+    alt="Flattening the contract"
+    width={300}
+    height={200}
+  />
+</div>
+
+Next, we fill out the form presented.
+
+- contract name: "zkToken"
+- compiler: v0.8.12 (this is the compiler version we used)
+- optimization: no (we didn't optimize the contract)
+- Finally, we copy and paste our flattened source code in the "Enter the Solidity Contract Code" and hit the "verify & Publish" button.
+
+we leave the rest as they are.
+
+<div className="flex justify-center">
+  <Img
+    src="https://i.ibb.co/1MgLVzz/Screenshot-100.png"
+    alt="Flattening the contract"
+    width={300}
+    height={200}
+  />
+</div>
+
+Voila!, we now have the checkmark that indicates that our contract has been verified!
+
+<div className="flex justify-center">
+  <Img
+    src="https://i.ibb.co/2Kddxnr/Screenshot-101.png"
+    alt="Flattening the contract"
+    width={300}
+    height={200}
+  />
+</div>
+
+## Conclusion
+
+We have successfully verified our ERC20 contract on the polygon zkEVM testnet, anyone can now interact with it. Earlier, I mentioned that single solidity files can be verified by following these same steps, although you do not need to flatten your code.
+
+Very soon, I believe that verification tools like Sourcify that offer full verification using contract metadata will support the polygon zkEVM testnet and when that happens, I will write about it!

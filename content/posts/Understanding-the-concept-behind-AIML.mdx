@@ -1,0 +1,100 @@
+---
+title: "Understanding the concept behind AIML"
+description: "AIML or Artificial Intelligence Markup Language is an XML base language used for creating chatbots(AI), it is always saved with the extension (.aiml)."
+publishedAt: "2017-12-08"
+status: "published"
+---
+
+<div className="flex justify-center">
+  <Img
+    src="https://res.cloudinary.com/developerayo/image/upload/v1551555821/aiml.png"
+    alt="Understanding the concept behind AIML"
+    width={300}
+    height={200}
+  />
+</div>
+
+## What is AIML?
+
+AIML or Artificial Intelligence Markup Language is an XML base language used for creating chatbots(AI), it is always saved with the extension (.aiml).
+
+The tag always used in AIML used to specify a new function is the `category` tag which has two other tags running under it that is the `pattern` tag and the `template` tag. Inside the template tage we could also have other tags inbuilt “Depends on the type of BOT you are building” eg `set`, `br/`, `srai`…etc
+
+But note something just as in HTML or any other programming Language or Scripting Language Even Markup Languages have a closing tag, here in AIML there is really not much a difference, the closing tags are `/category`, `/template`, `/srai>`, `/set`…etc
+
+## Example
+
+```HTML
+<category><pattern>WHO IS ABRAHAM LINCOLN</pattern>
+
+<template>was a great President of the United States, during the American Civil War.<br/>
+
+</template>
+
+</category>
+```
+
+Then the user inputs this in on some very close to this, the bot will respond to the input
+
+“WHO IS ABRAHAM LINCOLN” with the response “was a great President of the United States, during the American Civil War.”.
+
+Now lets create a simple bot using AIML
+
+```html
+<!doctype html>
+<html>
+  <body>
+    <em>Emphasized text</em><br />
+    <strong>Strong text</strong><br />
+    <code>A piece of computer code</code><br />
+    <samp>Sample output from a computer program</samp><br />
+    <kbd>Keyboard input</kbd><br />
+    <var>Variable</var>
+  </body>
+</html>
+```
+
+```AIML
+<?xml version=”1.0" encoding=”UTF-8"?>
+
+<aiml version=”1.0">
+
+<category><pattern>Hi</pattern>
+
+<template>Hi, I’m Oscar I was developed by Shodipo Ayomide 2017, <br/>How may I be of help</template>
+
+</category>
+
+<category><pattern>What are you </pattern>
+
+<template>I said, My name is Oscar and I was developed by Shodipo Ayomide ok! </template>
+
+</category>
+
+<category><pattern>Why are you rude </pattern>
+
+<template>Oh sorry, Please forgive my manners do not report me PLEASE!!! </template>
+
+</category>
+
+<category><pattern>ok </pattern>
+
+<template>PLEASE!!! </template>
+
+</category>
+
+</aiml>
+```
+
+## Now lets explain Templates
+
+A template specifies the response to a matched pattern.
+
+**I am Oscar by name**
+
+A template may use variables such as
+
+You told me you are `get name=”user-age”` years old
+which will fetch the users age if in db.
+
+Thanks for reading! 🔥🚀
