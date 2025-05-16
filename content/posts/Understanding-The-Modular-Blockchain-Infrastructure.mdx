@@ -2,212 +2,177 @@
 title: "Understanding The Modular Blockchain Infrastructure"
 description: "First generation blockchains like Bitcoin, Ethereum and Solana are saddled to the tasks of carrying out consensus, settlement, execution and data availability on the same layer hence they have been termed monolithic blockchains. By design, monolithic blockchains can’t effectively carry out all these tasks and this leads to the rise of the blockchain trilemma." # Using the first paragraph as description/tagline
 publishedAt: "2022-10-30"
-status: "published" # Assuming 'published' is the status key
-category: "Ethereum" # Keeping category, could potentially be a tag in your new format
+status: "published"
 ---
 
-<div className="flex justify-center">
-  <Img
-    src="https://i.ibb.co/YpX6xkL/new800.png"
-    alt="Conceptual diagram related to blockchain architecture"
-    width={800}
-    height={400}
-  />
-</div>
+<Img
+  src="https://i.ibb.co/YpX6xkL/new800.png"
+  alt="Conceptual diagram related to blockchain architecture"
+  width={1200}
+  height={900}
+/>
 
 First generation blockchains like Bitcoin, Ethereum and Solana are saddled to the tasks of carrying out consensus, settlement, execution and data availability on the same layer hence they have been termed monolithic blockchains. By design, monolithic blockchains can’t effectively carry out all these tasks and this leads to the rise of the blockchain trilemma.
-
 Blockchain characteristics include decentralization, scalability and security. In the case of monolithic blockchains, they have to compromise because they can only perform two at best and not all three. For instance Bitcoin compromises scalability for decentralization and security, Ethereum does the same.
-
 With the advent of modular blockchains, the blockchain trilemma can be solved. A modular blockchain is a blockchain that outsources one or more of the major blockchain tasks. The idea is that by splitting the core tasks of a blockchain between several layers, we can make remarkable improvement on individual layers thereby making the blockchain more scalable and efficient. You could think of this as division of labour.
 
-## The Blockchain Trilemma
+# The Blockchain Trilemma
 
 The blockchain trilemma is the concept that a blockchain cannot be secure, scalable and decentralized at the same time. Developers building their own blockchains are always presented with the nagging need to choose two out the three possible qualities.
 
-<div className="flex justify-center">
-  <Img
-    src="https://i.ibb.co/sCSxK6Y/images.png"
-    alt="Illustration of the blockchain trilemma"
-    width={800}
-    height={400}
-  />
-</div>
+<Img
+  src="https://i.ibb.co/sCSxK6Y/images.png"
+  alt=""
+  width={1200}
+  height={900}
+  bleed={false}
+  caption={
+    <>
+      <a href="https://vitalik.ca/general/2021/04/07/sharding.html">
+        Illustration of the blockchain trilemma
+      </a>
+    </>
+  }
+/>
 
-<div className="text-sm italic text-center">
-  <small>
-    <a href="https://vitalik.ca/general/2021/04/07/sharding.html">
-      Illustration Of The Blockchain Trilemma
-    </a>
-  </small>
-</div>
-
-### Decentralization
+## Decentralization
 
 The decentralization of the blockchain is its main attraction. It is the reason people choose cryptocurrencies over fiat. In order for a blockchain to be decentralized, hardware requirements must not be a limitation for participation, and the resource requirements of verifying the network should be low.
 
-### Scalability
+## Scalability
 
 This is the ability of a blockchain to handle an increase in the amount of transactions processed without increasing the resources required for verification.
+The scalability problem is one that has kept blockchain and crypto from mass adoption. In order to compete, blockchains need to progress to a stage where they can handle hundreds of transactions rapidly.Blockchains can scale by increasing block size but this will lead to increase in hardware requirements. This will affect decentralization.
 
-The scalability problem is one that has kept blockchain and crypto from mass adoption. In order to compete, blockchains need to progress to a stage where they can handle hundreds of transactions rapidly.
-
-Blockchains can scale by increasing block size but this will lead to increase in hardware requirements. This will affect decentralization.
-
-### Security
+## Security
 
 This is the ability to resist an hostile takeover. A good blockchain would have a robust security so that malicious third parties won’t be able to capitalize on the network’s vulnerability.
-
 Maintaining security requires a lot of processor power which might affect decentralization and scalability.
-
 Although solutions like sidechains, rollups, state channels have been built to solve this issue, in this article we would be looking at the approach taken by modular blockchains
 
 ## Core Functionalities Of The Blockchain
 
-### 1. Consensus
+**Consensus** - Consensus is the procedure that nodes of a particular blockchain network use to determine which transactions are valid and which are not.Consensus mechanisms are ways that participants use to carry out consensus, popular examples are Proof-of-Work, Proof-of-Stake etc. Consensus also provides ordering and finality of transactions.
 
-Consensus is the procedure that nodes of a particular blockchain network use to determine which transactions are valid and which are not.
+**Execution** - Execution refers to the way nodes process transactions sent to the network, this leads to a change in state of the blockchain.
 
-Consensus mechanisms are ways that participants use to carry out consensus, popular examples are Proof-of-Work, Proof-of-Stake etc. Consensus also provides ordering and finality of transactions.
-
-### 2. Execution
-
-Execution refers to the way nodes process transactions sent to the network, this leads to a change in state of the blockchain.
-
-### 3. Data Availability
-
-The blockchain is used to store the data that is used to verify the validity of a change in state of the blockchain. Block producers must publish data for each block for network peers to download and store and the data must be available upon request.
-
-Monolithic blockchains handle all of these functionalities on one layer while modular blockchains specialize in only one or two and outsource the rest.
+**Data Availability** - The blockchain is used to store the data that is used to verify the validity of a change in state of the blockchain. Block producers must publish data for each block for network peers to download and store and the data must be available upon request.Monolithic blockchains handle all of these functionalities on one layer while modular blockchains specialize in only one or two and outsource the rest.
 
 ## What Are Modular Blockchains
 
 As mentioned earlier, a blockchain trying to single-handedly carry out the 3 core functionalities limits its capacity and its throughput but a modular chain separates the system into several possible parts and works on them independently.
-
 In the modular blockchain architecture, the execution layer could be independent of the consensus and data availability layers, therefore allowing nodes to focus on only processing transactions separately rather than performing all transactions to ensure validity.
 
 ## Modular Blockchain Architecture
 
 In the modular blockchain architectural design, three layers work independently of each other and combine to form the modular stack.
 
-<div className="flex justify-center">
-  <Img
-    src="https://i.ibb.co/vPKT8dB/FZ0-Czjo-VUAAq-Rcc.png"
-    alt="Diagram illustrating modular blockchain architecture layers"
-    width={800}
-    height={400}
-  />
-</div>
-<div className="text-sm italic text-center">
-  <small>
-    <a href="https://celestia.org/learn/modular-architectures/">
-      Modular Blockchain Architecture
-    </a>
-  </small>
-</div>
+<Img
+  src="https://i.ibb.co/vPKT8dB/FZ0-Czjo-VUAAq-Rcc.png"
+  alt=""
+  width={1200}
+  height={900}
+  bleed={false}
+  caption={
+    <>
+      <a href="https://celestia.org/learn/modular-architectures">
+        Modular Blockchain Architecture
+      </a>
+    </>
+  }
+/>
 
 A modular blockchain could be designed to specialize in one or two of the following layers:
 
-### Consensus layer
+**Consensus layer** - A modular blockchain could be set up to specialize in only consensus thereby providing a set of rules and guidelines that will be used to validate and verify blocks of transactions. This will ensure that nodes/participants of the network reach an agreement thereby establishing security and decentralization in the stack.
 
-A modular blockchain could be set up to specialize in only consensus thereby providing a set of rules and guidelines that will be used to validate and verify blocks of transactions. This will ensure that nodes/participants of the network reach an agreement thereby establishing security and decentralization in the stack.
+**Execution Layer** - A typical example of a modular blockchain that only handles processing transactions are rollups. In the execution layer, the blockchain only focuses on processing transactions, it relies on another chain for settlement and finality.
 
-### Execution Layer
-
-A typical example of a modular blockchain that only handles processing transactions are rollups. In the execution layer, the blockchain only focuses on processing transactions, it relies on another chain for settlement and finality.
-
-### Data Availability Layer
-
-The data availability layer focuses on storing transaction data and providing it upon request and public for everyone to see. An example is the Polygon Avail.
+**Data Availability Layer** - The data availability layer focuses on storing transaction data and providing it upon request and public for everyone to see. An example is the Polygon Avail.
 
 ## Principle of Modularity
 
-The principle of modularity or modular design subdivides a system into smaller parts called modules which can be independently created, modified, replaced or even exchanged with other modules or between different systems.
-
-Modularity relies on specialization, meaning that each module can only perform a couple of specific tasks but it must perform them well. This is the principle on which modular blockchains are hinged.
+The principle of modularity or modular design subdivides a system into smaller parts called modules which can be independently created, modified, replaced or even exchanged with other modules or between different systems.Modularity relies on specialization, meaning that each module can only perform a couple of specific tasks but it must perform them well. This is the principle on which modular blockchains are hinged.
 
 ## Modular Blockchains vs Monolithic Blockchains
 
-<div className="flex justify-center">
-  <Img
-    src="https://i.ibb.co/1spb9Lj/monolithic-to-modular.webp"
-    alt="Diagram comparing monolithic and modular blockchain structures"
-    width={800}
-    height={400}
-  />
-</div>
-<div className="text-sm italic text-center">
-  <small>
-    <a href="https://celestia.org/learn/basics-of-modular-blockchains/">
-      Monolithic blockchains vs Modular Blockchains
-    </a>
-  </small>
-</div>
+<Img
+  src="https://i.ibb.co/1spb9Lj/monolithic-to-modular.webp"
+  alt=""
+  width={1200}
+  height={900}
+  bleed={false}
+  caption={
+    <>
+      <a href="https://celestia.org/learn/basics-of-modular-blockchains/">
+        Monolithic blockchains vs Modular Blockchains
+      </a>
+    </>
+  }
+/>
 
 ### Benefits of Modular Blockchains
 
-1. Scalability: Scalability problems arise when a blockchain tries to carry out all activities on one layer. The blockchain trilemma states that a blockchain can only have two out of the three available qualities it can possess but when tasks are separated amongst several modular blockchains, it becomes possible to improve scalability.
+**Scalability** - Scalability problems arise when a blockchain tries to carry out all activities on one layer. The blockchain trilemma states that a blockchain can only have two out of the three available qualities it can possess but when tasks are separated amongst several modular blockchains, it becomes possible to improve scalability.
 
-2. Creating New Blockchains: When developers are laser focused on making a blockchain perform only one particular task, it becomes relatively quicker to launch such a blockchain compared to monolithic blockchains designed to do everything.Since developers can focus on one specific function like executions, other modular blockchains that handle security and data availability can be easily plugged in.
+**Creating New** - Blockchains: When developers are laser focused on making a blockchain perform only one particular task, it becomes relatively quicker to launch such a blockchain compared to monolithic blockchains designed to do everything.Since developers can focus on one specific function like executions, other modular blockchains that handle security and data availability can be easily plugged in.
 
-3. Flexibility: A modular blockchain is more flexible than a monolithic blockchain because the modular blockchain can leverage the strength of another chain. For instance, an execution layer can benefit from the security of the parent chain and the parent chain enjoys the scalability of the execution layer. This is the relationship between rollups and Ethereum.
+**Flexibility** - A modular blockchain is more flexible than a monolithic blockchain because the modular blockchain can leverage the strength of another chain. For instance, an execution layer can benefit from the security of the parent chain and the parent chain enjoys the scalability of the execution layer. This is the relationship between rollups and Ethereum.
 
 ### Benefits of Monolithic Blockchains
 
-1. Security: Monolithic blockchains can enforce their own security becauses the nodes take note of the transactions and will have to achieve consensus among themselves in order to validate the transactions.
+**Security** - Monolithic blockchains can enforce their own security becauses the nodes take note of the transactions and will have to achieve consensus among themselves in order to validate the transactions.
 
-2. Utility: Because a monolithic blockchain handles execution among other duties, its native coin or token can experience an increase in value in the long run.
+**Utility** - Because a monolithic blockchain handles execution among other duties, its native coin or token can experience an increase in value in the long run.
 
 ### Drawbacks of Modular Blockchains
 
-1. Security: Unlike monolithic blockchains, modular blockchains depend on other layers for security which makes them dependent on the efficiency of such chains. If the security layer i.e the chain in charge of consensus and data availability is compromised, the entire modular stack risks failure.
+** Security** - Unlike monolithic blockchains, modular blockchains depend on other layers for security which makes them dependent on the efficiency of such chains. If the security layer i.e the chain in charge of consensus and data availability is compromised, the entire modular stack risks failure.
 
-2. Token Utility: Due to limited use cases, some modular blockchains may not be able to drive up the value of their native token, an example will be the layer in charge of data availability.
+** Token Utility** - Due to limited use cases, some modular blockchains may not be able to drive up the value of their native token, an example will be the layer in charge of data availability.
 
-3. Complexity: Modular blockchains have a pretty complex design which requires the involvement of developers with expert knowledge.
+** Complexity** - Modular blockchains have a pretty complex design which requires the involvement of developers with expert knowledge.
 
 ### Drawbacks of Monolithic Blockchains
 
-1. Rigid: Compared to modular blockchains, monolithic blockchains are not as flexible because they can’t outsource functions even when the network is experiencing a downtime.
+**Rigid** - Compared to modular blockchains, monolithic blockchains are not as flexible because they can’t outsource functions even when the network is experiencing a downtime.
 
-2. Scalability: For monolithic blockchains tht are not scalable, they can attempt to increase block size and block times but this increases the hardware requirements needed by nodes of the network leading to centralization.
+**Scalability** - For monolithic blockchains tht are not scalable, they can attempt to increase block size and block times but this increases the hardware requirements needed by nodes of the network leading to centralization.
 
-3. Inefficient Execution: In order to ensure the validity of transactions, nodes re-execute the transactions and this leads to delays.
+**Inefficient Execution** - In order to ensure the validity of transactions, nodes re-execute the transactions and this leads to delays.
 
 ## Examples Of Modular Blockchain Platforms
 
-1. Rollups: Rollups are designed to act as modular blockchains focused on execution. Rollups that could either be optimistic rollups or zero-knowledge rollups now act as the execution layer executing smart contracts and transactions. Ethereum acts as the layer for settlement and transaction data is published and stored here.
+**Rollups** - Rollups are designed to act as modular blockchains focused on execution. Rollups that could either be optimistic rollups or zero-knowledge rollups now act as the execution layer executing smart contracts and transactions. Ethereum acts as the layer for settlement and transaction data is published and stored here.
 
-2. Validiums: Validiums also act like zero-knowledge rollups, executing transactions on their own then submitting it to the parent chain alongside the validity proof but they don’t store data on the parent chain, instead they use data availability committees or data availability networks like Polygon Avail.
+**Validiums** - Validiums also act like zero-knowledge rollups, executing transactions on their own then submitting it to the parent chain alongside the validity proof but they don’t store data on the parent chain, instead they use data availability committees or data availability networks like Polygon Avail.
 
-3. Polygon Avail: While Rollups and Validiums act as execution layers, the Polygon Avail is a modular blockchain that acts as the data availability and consensus layer. Nodes here are charged with the task of ordering, storing and publishing transaction data upon request.
+**Polygon Avail** - While Rollups and Validiums act as execution layers, the Polygon Avail is a modular blockchain that acts as the data availability and consensus layer. Nodes here are charged with the task of ordering, storing and publishing transaction data upon request.
 
-<div className="flex justify-center">
-  <Img
-    src="https://i.ibb.co/vvhN9Gj/20220925-115619.jpg"
-    alt="Diagram showing examples of modular blockchain platforms"
-    width={800}
-    height={400}
-  />
-</div>
-<div className="text-sm italic text-center">
-  <small>
-    <a href="https://twitter.com/dabit3/status/1551932518374539264?t=Oixfkl8QGIXqouwD1GF8Nw&s=19">
-      Modular Blockchain Platforms
-    </a>
-  </small>
-</div>
+<Img
+  src="https://i.ibb.co/vvhN9Gj/20220925-115619.jpg"
+  alt=""
+  width={1200}
+  height={900}
+  bleed={false}
+  caption={
+    <>
+      <a href="https://twitter.com/dabit3/status/1551932518374539264?t=Oixfkl8QGIXqouwD1GF8Nw&s=19">
+        Modular Blockchain Platforms
+      </a>
+    </>
+  }
+/>
 
 ## Is Ethereum A Modular or Monolithic Blockchain?
 
 At the onset of Ethereum it functioned as a monolithic blockchain, carrying out execution, consensus, and data availability on its own. Later on, rollups were introduced and now Ethereum could outsource some execution tasks to the L2 solutions while carrying out consensus and data availability.
-
 Although Ethereum still executes transactions, it’s on its way to transitioning into a modular chain by implementing sharding.
-
 Sharding is a process when a system splits up to work in parts. By dividing the workload among its components it can increase efficiency and output. In Ethereum’s context, it will split into 64 shard chains (sub chains) that will work in parallel, each chain handling a different quota of the network’s activity.
+
+---
 
 ## Conclusion
 
 One may wonder when to choose between a monolithic or modular blockchain seeing that they both have their benefits and drawbacks. Choosing between both options requires proper understanding of the needs of the project.
-
 If security is paramount in the scheme of things, a monolithic blockchain sounds like the option to go for but if speed is most important, the modular blockchain would be a better option.

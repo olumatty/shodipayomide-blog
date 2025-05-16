@@ -5,32 +5,28 @@ publishedAt: "2022-09-19"
 status: "published"
 ---
 
-<div className="flex justify-center">
-  <Img
-    src="https://i.ibb.co/NYmdBg3/Screenshot-20220917-135859.png"
-    alt="Deep Dive Into Ethereum’s Journey To Achieving Scalability"
-    width={300}
-    height={200}
-  />
-</div>
+<Img
+  src="https://i.ibb.co/NYmdBg3/Screenshot-20220917-135859.png"
+  alt=""
+  width={1200}
+  height={900}
+  bleed={false}
+/>
 
 After Ethereum was successfully launched in 2015, it came face to face with a couple of problem that restricted it from reaching its potential. The high demand led to a clogged network with high costs of transactions, rapid growth made the process of running a node hard and the Proof-of-Work consensus mechanism was not making Ethereum sustainable.
 
 To combat these problems, Ethereum set out to upgrade its network and divided the upgrades into 5 phases namely; the Merge, Surge, Verge, Purge, Splurge
 
-<div className="flex justify-center">
-  <Img
-    src="https://i.ibb.co/6PK0hSM/miles.jpg"
-    alt="Ethereum’s 5 Phases"
-    width={300}
-    height={200}
-  />
-</div>
-<small>
-  <a href="https://twitter.com/milesdeutscher/status/1550315295402668032?t=0M6hOoA6VYZo2ehiodXoIw&s=19">
-    Representation of the phases of the Ethereum upgrade
-  </a>
-</small>
+<Img
+  src="https://i.ibb.co/6PK0hSM/miles.jpg"
+  alt="Ethereum’s 5 Phases"
+  width={1200}
+  height={900}
+  bleed={false}
+>
+  Representation of the phases of the Ethereum upgrade"
+  [https://twitter.com/milesdeutscher/status/1550315295402668032?t=0M6hOoA6VYZo2ehiodXoIw&s=19]
+</Img>
 
 It should be noted that these phases are happening in parallel and not sequentially.
 
@@ -46,64 +42,48 @@ The Beacon Chain was shipped on December 1, 2020. It was the PoS blockchain that
 
 ### Outcome Of The Merge
 
-1. **Increased Sustainability**
-
-The fundamental restructuring of Ethereum has dropped the energy requirements by 99.95% which now makes Ethereum more sustainable. This restructuring has now made it possible for Ethereum to be upgradable.
-
-2. **Improved Security**
-
-Proof of Stake has now democratized the network participation and this now leads to a higher level of security. The Merge now makes it possible for anyone with an internet connection and enough ETH balance to participate in the network. Ethereum has more validators than all PoS blockchains comined and the amount of ETH staked makes Ethereum virtually too expensive to be attacked.
-
-3. **Reduction in ETH Supply**
-
-Under the PoW model, the amount of ETH released into circulation was about 13,000 ETH per day (mining rewards) but now that the Merge has happened, amount of ETH released into circulation is estimated to be about 1,600 ETH per day (staking rewards). This drops the issuance of new ETH by approximately 90%. Also, Ethereum plans to burn about 1,600 ETH every day.
+**Increased Sustainability** -The fundamental restructuring of Ethereum has dropped the energy requirements by 99.95% which now makes Ethereum more sustainable. This restructuring has now made it possible for Ethereum to be upgradable.
+**Improved Security** - Proof of Stake has now democratized the network participation and this now leads to a higher level of security. The Merge now makes it possible for anyone with an internet connection and enough ETH balance to participate in the network. Ethereum has more validators than all PoS blockchains comined and the amount of ETH staked makes Ethereum virtually too expensive to be attacked.
+**Reduction in ETH Supply** - Under the PoW model, the amount of ETH released into circulation was about 13,000 ETH per day (mining rewards) but now that the Merge has happened, amount of ETH released into circulation is estimated to be about 1,600 ETH per day (staking rewards). This drops the issuance of new ETH by approximately 90%. Also, Ethereum plans to burn about 1,600 ETH every day.
 
 # The Surge
 
 The surge phase is the phase where Ethereum introduces sharding. The sharding concept is not specific to the blockchain world, it is actually a concept in computer science where a database is broken down into smaller parts known as shards in order to reduce the load on the main database.
 
-<div className="flex justify-center">
-  <Img
-    src="https://i.ibb.co/LQ0DxqF/png-20220916-164227-0000.png"
-    alt="Ethereum’s 5 Phases"
-    width={300}
-    height={200}
-  />
-</div>
-<small>
-  <a href="https://near.org/blog/detailed-overview-of-ethereum-2-0-shard-chains-committees-proposers-and-attesters">
-    Overview of Ethereum's sharded chains
-  </a>
-</small>
+<Img
+  src="https://i.ibb.co/LQ0DxqF/png-20220916-164227-0000.png"
+  alt=""
+  width={1200}
+  height={900}
+  bleed={false}
+  caption={
+    <>
+      <a href="https://near.org/blog/detailed-overview-of-ethereum-2-0-shard-chains-committees-proposers-and-attesters">
+        Overview of Ethereum's sharded chains
+      </a>
+    </>
+  }
+/>
 
-The purpose of sharding is to increase transaction speed and to also reduce network congestion. In the case of Ethereum, when sharding is carried out, the network will split into 64 shards and each shard acts as a mini-blockchain containing its own state, account balances and smart contracts.
+The purpose of sharding, is to increase transaction speed and to also reduce network congestion.
+
+In the case of Ethereum when sharding is carried out, the network will split into 64 shards and each shard acts as a mini-blockchain containing its own state, account balances and smart contracts.
 
 Validators will no longer need to verify every transaction being broadcasted on the Ethereum network, instead, they will focus on verifying new blocks on their own shards after which a committee of 128 validators then confirms on the main chain.
 
 ### Features of Sharding
 
-1. **Everyone can run a node**
+**Everyone can run a node** - With sharding in place, scaling can be achieved without trading decentralization because hardware requirements are reduced. Due to the fact that validators no longer need to store the entire data of the Ethereum database, the cost of storing data is reduced.
 
-With sharding in place, scaling can be achieved without trading decentralization because hardware requirements are reduced. Due to the fact that validators no longer need to store the entire data of the Ethereum database, the cost of storing data is reduced.
-
-2. **Increased network participation**
-
-Sharding allows for faster transactions because the network is split into smaller parts. This means that transactions can be processed faster and more efficiently.
+**Increased network participation** - Sharding allows for faster transactions because the network is split into smaller parts. This means that transactions can be processed faster and more efficiently.
 
 ### Shard Chains Version
 
-Version 1: **Data Availability**
+Version 1: **Data Availability** - Due to lower hardware requirements, one can run Ethereum using their personal computer or phone. This reduces the barrier of entry and increases security of the network since now, anyone can participate.
 
-Due to lower hardware requirements, one can run Ethereum using their personal computer or phone. This reduces the barrier of entry and increases security of the network since now, anyone can participate.
-
-Version 2: **Code execution**
-
-In this version, extra functionalities are added to the shard chains to make them much more identical to the mainnet. They will be able execute code, handle transactions and contain their own unique set of account balances and smart contracts. There will also be cross-shard communication.
-
+Version 2: **Code execution** - In this version, extra functionalities are added to the shard chains to make them much more identical to the mainnet. They will be able execute code, handle transactions and contain their own unique set of account balances and smart contracts. There will also be cross-shard communication.
 The need to upgrade shard chains from version 1 to 2 is being debated in the community considering the boost version 1 provides (i.e 100,000 transactions per second)
-
 Initially, Ethereum thought of carrying out sharding before the merge but with the rise of L2 scaling solutions, it become clear that transitioning to PoS was more important.
-
 Ethereum without rollups does between 15-40 tps, rollups on their own do 1,500-4,000 tps but when sharding is combined with the power of rollups, we can have about 100,000 tps.
 
 # The Verge
@@ -118,19 +98,20 @@ Ethereum currently uses a Merkle tree called Merkle Patricia tree which provides
 
 ### What are Verkle Trees
 
-<div className="flex justify-center">
-  <Img
-    src="https://i.ibb.co/wQzGKJB/Screenshot-2022-09-17-at-22-56-00.png"
-    alt="Ethereum’s 5 Phases"
-    width={300}
-    height={200}
-  />
-</div>
-<small>
-  <a href="https://vitalik.ca/general/2021/06/18/verkle.html">
-    Depiction of a hexary Verkle tree (Vitalik.ca)
-  </a>
-</small>
+<Img
+  src="https://i.ibb.co/wQzGKJB/Screenshot-2022-09-17-at-22-56-00.png"
+  alt=""
+  width={1200}
+  height={900}
+  bleed={false}
+  caption={
+    <>
+      <a href="https://vitalik.ca/general/2021/06/18/verkle.html">
+        Depiction of a hexary Verkle tree (Vitalik.ca)
+      </a>
+    </>
+  }
+/>
 
 The Verkle trees are very much similar ro Merkle trees but their most important feature is their proof size efficiency. A Merkle tree will require about 1kilobyte to provide a proof for a tree with 1 billion data points but a Verkle tree will require less than 150 bytes. Relying upon polynomial functions, Verkle trees describe data using Polynomial Commitments.
 
@@ -145,6 +126,8 @@ As earlier mentioned, the reduction in hardware requirements will increase decen
 # The Splurge
 
 This phase is regarded by Vitalik as “the fun stuff”. it aims at making the network run smoothly after all other upgrades have taken place.
+
+---
 
 # Conclusion
 
